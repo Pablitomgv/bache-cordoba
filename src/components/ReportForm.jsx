@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './ReportForm.css'
 
 export default function ReportForm({ onClose }) {
@@ -8,6 +8,19 @@ export default function ReportForm({ onClose }) {
   const [description, setDescription] = useState('')
   const [loadingLocation, setLoadingLocation] = useState(false)
   const [locationError, setLocationError] = useState(null)
+  
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', handleEscape)
+    document.body.style.overflow = 'hidden'
+  
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
 
   const handlePhotoChange = (e) => {
     const file = e.target.files[0]
