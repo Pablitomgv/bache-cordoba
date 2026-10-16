@@ -1,0 +1,24 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html,
+  body,
+  #app {
+    height: 100%;
+    width: 100%;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+  
+  /* Para que el mapa no tenga z-index conflictivo con futuros overlays */
+  .leaflet-container {
+    z-index: 1;
+  }
